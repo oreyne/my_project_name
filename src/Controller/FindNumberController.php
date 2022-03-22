@@ -29,7 +29,9 @@ class FindNumberController extends AbstractController
             $entity = $form->getData();
             $sentNumberByUser = $entity->getTheNumber();
 
-
+            $list = range(1, 10000000000);
+            $position = array_search($sentNumberByUser, $list);
+            $result = $position !== false ? $list[$position] : 'no se encuentra';
         }
 
         return $this->renderForm('task/new.html.twig', [
